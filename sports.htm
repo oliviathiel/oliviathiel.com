@@ -1,0 +1,157 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href = "homepagecss.css">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
+<script async>
+  const pics = ["Sports/bbdunk_resized.jpg", "Sports/IMG_3383_resized.jpg", "Sports/IMG_7353_resized.jpg",
+  "Sports/IMG_5840_resized.jpg", "Sports/IMG_7639_resized.jpg", "Sports/IMG_5824_resized.jpg"]; 
+  // function setIndex()
+  // {
+  //   modalindex++;
+  //   return modalindex - 1;
+  // }
+  // function initModal()
+  // {
+  //   for (var i = 0; i < pics.length; i++)
+  //   {//myslides -> modalcontent -> mymodal
+  //     var modalDIVContent = document.getElementById("myModal");
+  //     var innerDiv = document.createElement('div');
+  //     var myslides = document.getElementById("mySlides");
+  //     // myslides.className = "mySlides";
+  //     // myslides.setAttribute("id", "mySlides");   
+  //     innerDiv.className = 'modal-content';
+  //     innerDiv.setAttribute("id", "modal-content");        
+      
+
+  //     var oImg = document.createElement("img");
+  //     var x = pics[i].indexOf("_resized");
+  //     console.log(x);
+  //     var name = pics[i].substring(0, x) + ".jpg";
+  //     console.log(name);
+  //     oImg.setAttribute('src', name);
+  //     oImg.style="width:800";
+  //     oImg.className="center";
+  //     oImg.display="none";
+  //     // console.log(document.getElementByID("myModal").getElementById("modal-content"));
+  //     // document.body.appendChild(oImg);
+  //     // document.getElementByID("myModal").getElementById("modal-content").appendChild(oImg);
+  //     console.log(myslides);
+  //    myslides.appendChild(oImg);
+  //    innerDiv.appendChild(myslides);
+  //     modalDIVContent.appendChild(innerDiv);
+  //   }
+
+  // }
+
+  function initGallery()
+  {
+    for (var i = 0; i < pics.length; i++)
+    {
+      var oImg = document.createElement("img");
+      oImg.setAttribute('src', pics[i]);
+      oImg.setAttribute('onclick', `openModal();currentSlide(${i + 1})`);
+      oImg.style.margin = "5px";
+      oImg.style.border = "1px solid #ccc";
+      oImg.setAttribute("float", "left");
+      oImg.setAttribute('width', 'auto');
+      oImg.setAttribute('height', "250px");
+      oImg.className = "gallery hover-shadow";
+      document.getElementById("gallery").appendChild(oImg);
+    }
+  }
+  function getIndex(e)
+  {
+    console.log((e));
+    return parseInt(e.id);
+  }
+  function openModal() 
+  {
+    document.getElementById("myModal").style.display = "block";
+  }
+  
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+  
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("thumbnail");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
+  
+
+  </script>
+</head>
+<body>
+  <img src="header2_resized.png" alt="Cinque Terre" width="200" height=auto class="left">
+  <ul class="navbar">
+  <li><a href="./index.htm">HOME</a>  
+  <li><a href="./portraits.htm">PORTRAITS</a>
+  <li><a href="./Landscapes.htm">LANDSCAPES</a>
+  <li><a href="./sports.htm">SPORTS</a>
+  <li><a href="./nature.htm">NATURE</a>
+  <li><a href="./hire_me.htm">BOOKINGS</a>
+  </ul>
+  <hr>
+<h2>SPORTS</h2>
+<div id="gallery">
+
+</div>
+
+
+<!-- The Modal/Lightbox -->
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <div class="mySlides">
+      <img src="Sports/bbdunk.jpg" style="width:800" class="center">
+    </div>
+    <div class="mySlides">
+      <img src="Sports/IMG_3383.jpg" style="width:800" class="center">
+    </div>
+    <div class="mySlides">
+      <img src="Sports/IMG_7353.jpg" style="width:800" class="center">
+    </div>
+    <div class="mySlides">
+      <img src="Sports/IMG_5840.jpg" style="width:800" class="center">
+    </div>
+    <div class="mySlides">
+      <img src="Sports/IMG_7639.jpg" style="width:800" class="center">
+    </div>
+    <div class="mySlides">
+      <img src="Sports/IMG_5824.jpg" style="width:800" class="center">
+    </div>
+
+    <!-- Next/previous controls -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    
+  </div>
+</div>
+<script>
+// initModal(); 
+  initGallery();</script>
+</body>
+</html>
